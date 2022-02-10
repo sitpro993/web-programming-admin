@@ -16,11 +16,17 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 
 export const StatisticsByCategory = (props) => {
   const theme = useTheme();
+  const totalProductSold = props.statisticalorders.reduce((prev, item) => {
+    return prev + item.count;
+  }, 0);
+  const percent = props.statisticalorders.map((item) => {
+    return (item.count / totalProductSold) * 100;
+  });
 
   const data = {
     datasets: [
       {
-        data: [40, 19, 22, 19],
+        data: percent,
         backgroundColor: ["#ff9f43", "#ee5253", "#0abde3", "#10ac84"],
         borderWidth: 8,
         borderColor: "#FFFFFF",
@@ -55,25 +61,25 @@ export const StatisticsByCategory = (props) => {
   const devices = [
     {
       title: "BeeCase",
-      value: 40,
+      value: Math.round(percent[0]),
       icon: AdUnitsIcon,
       color: "#ff9f43",
     },
     {
       title: "BeeTee",
-      value: 19,
+      value: Math.round(percent[1]),
       icon: CheckroomIcon,
       color: "#ee5253",
     },
     {
       title: "BeeBag",
-      value: 22,
+      value: Math.round(percent[2]),
       icon: ShoppingBagIcon,
       color: "#0abde3",
     },
     {
       title: "BeeCarry",
-      value: 19,
+      value: Math.round(percent[3]),
       icon: AccountBalanceWalletIcon,
       color: "#10ac84",
     },

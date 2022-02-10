@@ -16,7 +16,7 @@ export const TotalOrder = (props) => (
           <Typography color="textSecondary" gutterBottom variant="overline">
             Tổng số đơn hàng
           </Typography>
-          <Typography color="textPrimary" variant="h4">
+          <Typography color="textPrimary" variant="h5">
             {props.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </Typography>
         </Grid>

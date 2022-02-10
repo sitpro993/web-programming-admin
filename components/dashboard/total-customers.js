@@ -17,7 +17,7 @@ export const TotalCustomers = (props) => (
           <Typography color="textSecondary" gutterBottom variant="overline">
             Tổng số khách hàng
           </Typography>
-          <Typography color="textPrimary" variant="h4">
+          <Typography color="textPrimary" variant="h5">
             {props.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </Typography>
         </Grid>

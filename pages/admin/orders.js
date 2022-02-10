@@ -4,8 +4,15 @@ import { DashboardLayout } from "../../components/dashboard-layout";
 import { customers } from "../../__mocks__/customers";
 import { OrderListToolbar } from "../../components/order/order-list-toolbar";
 import { OrderListResults } from "../../components/order/order-list-result";
+import { getData } from "../../utils/fecthData";
 
-const Orders = () => {
+export async function getStaticProps() {
+  const orders = await getData("orders");
+
+  return { props: orders };
+}
+
+const Orders = ({ orders }) => {
   return (
     <>
       <Head>
@@ -21,7 +28,7 @@ const Orders = () => {
         <Container maxWidth={false}>
           <OrderListToolbar />
           <Box sx={{ mt: 3 }}>
-            <OrderListResults orders={customers} />
+            <OrderListResults orders={orders} />
           </Box>
         </Container>
       </Box>

@@ -27,7 +27,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { changeToSlug } from "../../../../utils/changeToSlug";
 import Image from "next/image";
-import { getData, patchData, postData } from "../../../../utils/fecthData";
+import { getData, patchData } from "../../../../utils/fecthData";
 import { validateProduct } from "../../../../utils/validate";
 import { toast } from "react-toastify";
 import { imageUpload } from "../../../../utils/imageUpload";
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

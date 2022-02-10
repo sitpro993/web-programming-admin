@@ -102,20 +102,23 @@ export const LatestOrders = (props) => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders.map((order) => (
-              <TableRow hover key={order.id}>
-                <TableCell>{order.ref}</TableCell>
-                <TableCell>{order.customer.name}</TableCell>
-                <TableCell>{format(order.createdAt, "dd/MM/yyyy")}</TableCell>
+            {props.orders.map((order, index) => (
+              <TableRow hover key={index}>
+                <TableCell>{order._id}</TableCell>
+                <TableCell>{order.name}</TableCell>
+                <TableCell>
+                  {/* {format(order.createdAt, "dd/MM/yyyy")} */}
+                  {order.createdAt.slice(0, 10)}
+                </TableCell>
                 <TableCell>
                   <SeverityPill
                     color={
-                      (order.status === "delivered" && "success") ||
-                      (order.status === "refunded" && "error") ||
-                      "warning"
+                      order.isPaid && order.isDelivered ? "success" : "warning"
                     }
                   >
-                    {order.status}
+                    {order.isPaid && order.isDelivered
+                      ? "Hoàn thành"
+                      : "Đang chờ"}
                   </SeverityPill>
                 </TableCell>
               </TableRow>

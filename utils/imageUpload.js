@@ -1,6 +1,5 @@
 export const imageUpload = async (variant, category) => {
   let newVariant = [];
-  console.log(category);
   for (const item of variant) {
     if (!item.public_id) {
       const formData = new FormData();

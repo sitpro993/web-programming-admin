@@ -43,11 +43,11 @@ const items = [
     title: "Cài đặt",
   },
 
-  {
-    href: "/login",
-    icon: <SettingsIcon fontSize="small" />,
-    title: "Register",
-  },
+  // {
+  //   href: "/login",
+  //   icon: <SettingsIcon fontSize="small" />,
+  //   title: "Register",
+  // },
   // {
   //   href: "/404",
   //   icon: <XCircleIcon fontSize="small" />,

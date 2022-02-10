@@ -445,7 +445,7 @@ const Products = ({ products }) => {
                             {product.variant.length}
                           </TableCell>
                           <TableCell style={{ textAlign: "center" }}>
-                            {product.price}
+                            {product.price} ₫
                           </TableCell>
 
                           <TableCell style={{ textAlign: "center" }}>

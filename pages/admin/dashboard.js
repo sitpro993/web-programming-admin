@@ -9,19 +9,28 @@ import { TotalCustomers } from "../../components/dashboard/total-customers";
 import { TotalIncome } from "../../components/dashboard/total-income";
 import { StatisticsByCategory } from "../../components/dashboard/statistics-by-category";
 import { DashboardLayout } from "../../components/dashboard-layout";
-import { useEffect, useState } from "react";
 import { getData } from "../../utils/fecthData";
 
-const Dashboard = () => {
-  const [statistical, setStatistical] = useState({});
+export async function getStaticProps() {
+  const statisticalOrders = await getData("admin/statisticalOrders");
+  const res = await getData(`admin/statistical`);
+  const featuredProducts = await getData(`products/hot?limit=5`);
+  const lastestOrder = await getData(`orders/createdAt`);
 
-  useEffect(() => {
-    const getStatistical = async () => {
-      const res = await getData(`admin/statistical`);
-      setStatistical(res);
-    };
-    getStatistical();
-  }, []);
+  return {
+    props: {
+      countOrder: res.countOrder,
+      countProduct: res.countProduct,
+      countUser: res.countUser,
+      totalIncome: res.totalIncome,
+      statisticalOrders,
+      featuredProducts: featuredProducts,
+      lastestOrder: lastestOrder.orders,
+    },
+  };
+}
+
+const Dashboard = (props) => {
   return (
     <>
       <Head>
@@ -37,36 +46,33 @@ const Dashboard = () => {
         <Container maxWidth={false}>
           <Grid container spacing={3}>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              {statistical.countProduct && (
-                <TotalProduct count={statistical.countProduct} />
-              )}
+              <TotalProduct count={props.countProduct} />
             </Grid>
             <Grid item xl={3} lg={3} sm={6} xs={12}>
-              {statistical.countUser && (
-                <TotalCustomers count={statistical.countUser} />
-              )}
+              <TotalCustomers count={props.countUser} />
             </Grid>
             <Grid item xl={3} lg={3} sm={6} xs={12}>
-              {statistical.countOrder && (
-                <TotalOrder count={statistical.countOrder} />
-              )}
+              <TotalOrder count={props.countOrder} />
             </Grid>
             <Grid item xl={3} lg={3} sm={6} xs={12}>
-              {statistical.totalIncome && (
-                <TotalIncome count={statistical.totalIncome} />
-              )}
+              <TotalIncome count={props.totalIncome} />
             </Grid>
             <Grid item lg={8} md={12} xl={9} xs={12}>
               <Sales sx={{ height: "100%" }} />
             </Grid>
             <Grid item lg={4} md={6} xl={3} xs={12}>
-              <StatisticsByCategory />
+              <StatisticsByCategory
+                statisticalorders={props.statisticalOrders}
+              />
             </Grid>
             <Grid item lg={4} md={6} xl={3} xs={12}>
-              <FeaturedProducts sx={{ height: "100%" }} />
+              <FeaturedProducts
+                product={props.featuredProducts}
+                sx={{ height: "100%" }}
+              />
             </Grid>
             <Grid item lg={8} md={12} xl={9} xs={12}>
-              <LatestOrders />
+              <LatestOrders orders={props.lastestOrder} />
             </Grid>
           </Grid>
         </Container>

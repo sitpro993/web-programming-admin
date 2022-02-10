@@ -16,8 +16,8 @@ export const TotalIncome = (props) => (
           <Typography color="textSecondary" gutterBottom variant="overline">
             Tổng thu nhập
           </Typography>
-          <Typography color="textPrimary" variant="h4">
-            {props.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          <Typography color="textPrimary" variant="h5">
+            {props.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ₫
           </Typography>
         </Grid>
         <Grid item>
