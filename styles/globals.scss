@@ -1,0 +1,38 @@
+.add-variant-info {
+  position: relative;
+}
+
+.delete-variant-photo-btn {
+  position: absolute;
+  top: 33px;
+  left: 23px;
+  z-index: 3;
+}
+.upload-photo-variant-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 330px;
+  background-color: #efefef;
+}
+
+.upload-photo-variant-wrapper img {
+  width: 100%;
+  border-radius: 10px;
+}
+.upload-photo-variant-wrapper .upload-variant-photo-svg {
+  height: 50px;
+  width: 50px;
+  color: #888888;
+}
+
+.upload-photo-variant-wrapper .edit-variant-photo-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 24px;
+  width: 24px;
+}
