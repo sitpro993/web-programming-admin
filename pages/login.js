@@ -54,17 +54,8 @@ const Login = () => {
         password: values.password.trim(),
       };
 
-      dispatch({
-        type: "NOTIFY",
-        payload: { loading: true },
-      });
-
       const res = await postData("admin/signin", userData);
 
-      dispatch({
-        type: "NOTIFY",
-        payload: { loading: false },
-      });
       if (res.errCode === 1) {
         resetForm({ email: {}, password: {} });
         return setError(res);

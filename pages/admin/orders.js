@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Box, Container } from "@mui/material";
 import { DashboardLayout } from "../../components/dashboard-layout";
-import { customers } from "../../__mocks__/customers";
 import { OrderListToolbar } from "../../components/order/order-list-toolbar";
 import { OrderListResults } from "../../components/order/order-list-result";
 import { getData } from "../../utils/fecthData";

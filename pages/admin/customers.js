@@ -3,7 +3,6 @@ import { Box, Container } from "@mui/material";
 import { CustomerListResults } from "../../components/customer/customer-list-results";
 import { CustomerListToolbar } from "../../components/customer/customer-list-toolbar";
 import { DashboardLayout } from "../../components/dashboard-layout";
-import { customers } from "../../__mocks__/customers";
 import { getData } from "../../utils/fecthData";
 
 export async function getStaticProps() {

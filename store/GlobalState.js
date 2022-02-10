@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const initialState = { notify: {}, auth: {} };
+  const initialState = { auth: {} };
   const [state, dispatch] = useReducer(reducers, initialState);
   const { auth } = state;
 
