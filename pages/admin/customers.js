@@ -7,7 +7,6 @@ import { getData } from "../../utils/fecthData";
 
 export async function getStaticProps() {
   const data = await getData("users");
-
   return { props: data };
 }
 
